@@ -123,8 +123,28 @@
       </main>
     </div>
 
+    <button
+      type="button"
+      class="debug-launcher"
+      id="debug-launcher"
+      hidden
+      aria-label="Show preview panel"
+    >
+      Preview
+    </button>
+
     <aside class="debug is-open" id="debug" aria-label="Artwork preview">
-      <p class="debug-title">Preview</p>
+      <div class="debug-head">
+        <p class="debug-title">Preview</p>
+        <button
+          type="button"
+          class="debug-hide"
+          id="debug-hide"
+          aria-label="Hide preview panel"
+        >
+          Hide
+        </button>
+      </div>
       <p class="debug-combo" id="debug-combo">—</p>
       <div class="debug-row" id="debug-phase"></div>
       <div class="debug-row" id="debug-condition"></div>

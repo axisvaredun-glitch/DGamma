@@ -10,6 +10,7 @@ import { VISUAL_CONDITIONS, VISUAL_PHASES } from './lib/weatherVisual.js';
 
 const PHASES = VISUAL_PHASES;
 const CONDITIONS = VISUAL_CONDITIONS;
+const PREVIEW_PANEL_KEY = 'previewPanelOpen';
 
 const els = {
   scene: document.querySelector('.stage'),
@@ -33,6 +34,8 @@ const els = {
   debugCondition: document.querySelector('#debug-condition'),
   debugSync: document.querySelector('#debug-sync'),
   debugCombo: document.querySelector('#debug-combo'),
+  debugHide: document.querySelector('#debug-hide'),
+  debugLauncher: document.querySelector('#debug-launcher'),
 };
 
 const scene = mountScene(els.scene);
@@ -240,6 +243,34 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setPanelOpen(false);
 });
 
+function readPreviewPanelOpen() {
+  try {
+    const raw = localStorage.getItem(PREVIEW_PANEL_KEY);
+    if (raw == null) return true;
+    return raw !== '0' && raw !== 'false';
+  } catch {
+    return true;
+  }
+}
+
+function writePreviewPanelOpen(open) {
+  try {
+    localStorage.setItem(PREVIEW_PANEL_KEY, open ? '1' : '0');
+  } catch {
+    /* ignore */
+  }
+}
+
+function setPreviewPanelOpen(open) {
+  if (!els.debug) return;
+  els.debug.classList.toggle('is-open', open);
+  els.debug.hidden = !open;
+  if (els.debugLauncher) {
+    els.debugLauncher.hidden = open;
+  }
+  writePreviewPanelOpen(open);
+}
+
 function syncDebug() {
   if (!els.debug) return;
   const phase = current ? activePhase(current) : null;
@@ -265,8 +296,11 @@ async function adjustToCurrentWeather() {
 
 function buildDebug() {
   if (!els.debug) return;
-  els.debug.hidden = false;
-  els.debug.classList.add('is-open');
+
+  setPreviewPanelOpen(readPreviewPanelOpen());
+
+  els.debugHide?.addEventListener('click', () => setPreviewPanelOpen(false));
+  els.debugLauncher?.addEventListener('click', () => setPreviewPanelOpen(true));
 
   els.debugPhase.innerHTML = PHASES.map(
     (phase) => `<button type="button" data-phase="${phase}">${phase}</button>`,
