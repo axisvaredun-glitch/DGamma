@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atmosphere — Weather Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <section class="stage" aria-label="Weather atmosphere">
+        <div id="scene" class="scene"></div>
+      </section>
+
+      <main class="sheet">
+        <header class="lead">
+          <div class="lead-top">
+            <p class="eyebrow" id="phase-label">—</p>
+            <p class="stamp" id="clock">—</p>
+          </div>
+
+          <div class="place-wrap">
+            <div class="place-row">
+              <button
+                class="place"
+                id="place"
+                type="button"
+                aria-expanded="false"
+                aria-controls="place-panel"
+              >
+                —
+              </button>
+              <button
+                class="gps-btn"
+                id="gps-btn"
+                type="button"
+                title="Detect my location"
+                aria-label="Detect my location"
+              >
+                <span class="gps-icon" aria-hidden="true"></span>
+                <span class="gps-label">Detect My Location</span>
+              </button>
+            </div>
+            <div class="place-meta">
+              <span class="place-hint">Change location</span>
+              <span class="gps-badge" id="gps-badge">GPS idle</span>
+            </div>
+            <div class="place-panel" id="place-panel" hidden>
+              <label class="place-label" for="place-input">Location</label>
+              <input
+                id="place-input"
+                class="place-input"
+                type="search"
+                placeholder="Cari kecamatan di Pulau Jawa…"
+                autocomplete="off"
+              />
+              <ul class="place-list" id="place-list" role="listbox"></ul>
+            </div>
+          </div>
+
+          <h1 class="temp">
+            <span id="temp">—</span><span class="unit">°</span>
+          </h1>
+          <p class="status" id="status">—</p>
+          <p class="lede" id="lede">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+            auctor, nisl a fermentum blandit, libero ligula dictum eros, vitae
+            tincidunt arcu elit sed magna.
+          </p>
+        </header>
+
+        <section class="narrative" aria-label="Weather narrative">
+          <h2>Today’s reading</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat a ante venenatis dapibus posuere velit aliquet. Donec
+            ullamcorper nulla non metus auctor fringilla. Aenean lacinia bibendum
+            nulla sed consectetur.
+          </p>
+          <p>
+            Cras mattis consectetur purus sit amet fermentum. Maecenas faucibus
+            mollis interdum. Curabitur blandit tempus porttitor. Praesent
+            commodo cursus magna, vel scelerisque nisl consectetur et. Nullam
+            quis risus eget urna mollis ornare vel eu leo.
+          </p>
+          <p>
+            Vestibulum id ligula porta felis euismod semper. Sed posuere
+            consectetur est at lobortis. Fusce dapibus, tellus ac cursus
+            commodo, tortor mauris condimentum nibh, ut fermentum massa justo
+            sit amet risus.
+          </p>
+        </section>
+
+        <section class="metrics" aria-label="Weather metrics">
+          <article class="metric">
+            <p class="metric-k">Humidity</p>
+            <p class="metric-v" id="humidity">—</p>
+          </article>
+          <article class="metric">
+            <p class="metric-k">Wind</p>
+            <p class="metric-v" id="wind">—</p>
+          </article>
+          <article class="metric">
+            <p class="metric-k">UV Index</p>
+            <p class="metric-v" id="uv">—</p>
+          </article>
+          <article class="metric">
+            <p class="metric-k">Pressure</p>
+            <p class="metric-v" id="pressure">—</p>
+          </article>
+        </section>
+
+        <section class="hourly" aria-label="Hourly forecast">
+          <h2>Next hours</h2>
+          <div class="hourly-track" id="hourly"></div>
+        </section>
+      </main>
+    </div>
+
+    <aside class="debug is-open" id="debug" aria-label="Artwork preview">
+      <p class="debug-title">Preview</p>
+      <p class="debug-combo" id="debug-combo">—</p>
+      <div class="debug-row" id="debug-phase"></div>
+      <div class="debug-row" id="debug-condition"></div>
+      <button class="debug-sync" id="debug-sync" type="button">
+        Live weather
+      </button>
+    </aside>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

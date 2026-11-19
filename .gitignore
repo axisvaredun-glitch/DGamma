@@ -1,0 +1,18 @@
+# secrets
+.env
+.env.*
+*.pem
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# local scratch
+_shot-*.png
+*.log
+
+# optional heavy source (keep exported PNG in repo)
+src/hero/assets/**/*.eps
