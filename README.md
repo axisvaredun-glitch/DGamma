@@ -1,16 +1,30 @@
 # DGamma
 
-Weather editorial hero (vanilla JS): adaptive sky scene, AccuWeather/demo data, preview panel.
+Weather editorial hero (Vite + vanilla JS): adaptive sky scene, AccuWeather/demo data, preview panel.
 
-## Run locally
+**Live (GitHub Pages):** https://axisvaredun-glitch.github.io/DGamma/
+
+## Local dev
 
 ```bash
-cd gamma
-python -m http.server 4182
+npm install
+npm run dev
 ```
 
-Open [http://localhost:4182](http://localhost:4182).
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## GitHub Pages
+
+1. Repo **Settings → Pages → Build and deployment**: source **GitHub Actions**
+2. Push to `main` — workflow `.github/workflows/deploy.yml` builds `dist/` and deploys
+
+`vite.config.js` uses `base: '/DGamma/'` (nama repo). Ubah jika nama repo berbeda.
 
 ## AccuWeather (optional)
 
-Edit `src/config.js`: set `DEMO_MODE = false` and add `ACCUWEATHER_API_KEY`. Do not commit real API keys.
+Edit `src/config.js`: `DEMO_MODE = false` + `ACCUWEATHER_API_KEY`. Jangan commit API key nyata.
